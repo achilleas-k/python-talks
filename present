@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+cleanup() {
+    serverpid=$1
+    chrompid=$2
+    chromdir=$3
+
+    echo "Killing browser window (${chrompid})"
+    kill $chrompid
+    sleep 1
+
+    echo "Cleaning up profile directory (${chromdir})"
+    rm -r ${chromdir}
+    sleep 1
+
+    echo "Killing server (${serverpid})"
+    kill $serverpid
+    sleep 1
+}
+
+python -m http.server &
+serverpid=$!
+chromdir="/tmp/chromium-slides-$RANDOM"
+chromium --app="http://localhost:8000/slides" --user-data-dir="$chromdir" &> /dev/null &
+chrompid=$!
+trap 'cleanup $serverpid $chrompid $chromdir' EXIT
+wait
