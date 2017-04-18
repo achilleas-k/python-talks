@@ -197,14 +197,9 @@ Sort of...
 literally
 
 ```python
-[greetprint.py]
+# greetprint.py
 def greet(name):
-    print("Hello, {}".format(name))
-
-
-def morning_greet(name):
-    print("Good morning, {}.".format(name))
-    print("I hope you have a nice day.")
+    return "Hello, " + name
 
 
 print("Oh my, it looks like someone just imported me ...")
@@ -214,12 +209,11 @@ print("Oh my, it looks like someone just imported me ...")
 
 --
 
-```python
-[ipython]
-In [1]: import greetprint
+```
+>>> import greetprint
 Oh my, it looks like someone just imported me ...
 
-In [2]:
+>>>
 ```
 
 ???
@@ -227,6 +221,13 @@ In [2]:
 Python will in fact RUN the script, which in this case consists of TWO function definitions and a single print statement.
 
 The reason we only get one print statement and not four is that when a def is found (a function definition), the BODY of the function is NOT executed. A def block defines a function and makes the name available so that the BODY can be executed when its CALLED.
+
+---
+
+Kind of like running but not really:
+what happens when importing twice? (importing same module in multiple scripts or interdependent modules)
+
+Don't use it to run the script
 
 ---
 
@@ -245,6 +246,10 @@ In [2]: morning_greet("Bob")
 Good morning, Bob.
 I hope you have a nice day.
 ```
+
+???
+
+Mention namespace collision
 
 ---
 
@@ -275,13 +280,13 @@ You should generally avoid doing this
 
 --
 
-.okish[Unless you really have to...]
+.okish[Unless you really want to...]
 
 ???
 
 However, you will find out that in Python, a lot of times when we say never do this
 
-it's followed by "unless you really have to"
+it's followed by "unless you really want to"
 
 --
 
@@ -339,38 +344,36 @@ The body of the function is not run, only the header which **defines** the funct
 
 # def
 
-Let's define a function with an error in it
+```python
+>>> def broken_function():
+...     return "x" + 10
+...
+>>> broken_function()
+TypeError: must be str, not int
+```
+
+--
 
 ```python
-[ipython]
-In [1]: def broken_function():
-   ...:     print("This line is fine")
-   ...:     a = "string" + 10
-   ...:     print("This line won't be executed.")
-   ...:     print("Neither will any below it...")
-   ...:     print("Adding 'str' to 'int' will cause an error")
-   ...:     print("Not when it's defined, but when it's called")
-   ...:
+# printrand.py
+import random
 
-In [2]: # no error so far
 
-In [3]: broken_function()
-This line is fine
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-----> 1 broken_function()
-----> 3     a = "string" + 10
-TypeError: must be str, not int
+def print_rand(r=random.random()):
+    print("The value of r is {}".format(r))
 ```
 
 ---
 
 # def
 
+
+# def
+
 Same thing, but `import` it from a python file
 
 ```python
-[ipython]
+[broken.py]
 def broken_function():
     print("This line is fine")
     a = "string" + 10
@@ -401,7 +404,7 @@ How is this information useful?
 
 --
 
-I'll get back to that in a minut...
+I'll get back to that in a minute...
 
 --
 
