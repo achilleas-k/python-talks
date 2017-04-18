@@ -35,6 +35,12 @@ Most of the examples I use will be boring and might even seem nonsensical: I sho
 
 ---
 
+class: center, middle
+
+## The `import` statement
+
+---
+
 # `import`
 
 This should look familiar
@@ -166,9 +172,11 @@ When you execute import <something>, the <something> is the name of the module. 
 
 When we do `import greetings`, Python finds the file called `greetings.py`, so it imports it as the module called `greetings`.
 
---
+---
 
-### HANG ON A MINUTE
+# `import`
+
+### Python **runs** the script on import
 
 ???
 
@@ -184,11 +192,8 @@ That's in no way an inaccurate statement. Python literally runs the script as if
 
 Sort of...
 
----
+--
 
-# `import`
-
-Try this
 ```python
 def greet(name):
     print("Hello, {}".format(name))
@@ -234,3 +239,47 @@ In [2]: morning_greet("Bob")
 Good morning, Bob.
 I hope you have a nice day.
 ```
+
+---
+
+# `from _ import *`
+
+Alternatively you can just import everything
+
+
+```python
+In [1]: from greetings import *
+
+In [2]: greet("Charlie")
+Hello, Charlie
+
+In [3]: morning_greet("Diana")
+Good morning, Diana.
+I hope you have a nice day.
+```
+
+--
+
+.bad[Never do this!]
+
+--
+
+.okish[Unless you really have to...]
+
+--
+
+.good[Or a library's documentation suggests it.]
+
+(e.g., the Brian simulator)
+
+---
+
+class: center, middle
+
+## Functions
+
+---
+
+
+
+
