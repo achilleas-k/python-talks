@@ -309,6 +309,10 @@ The body of the function is not run, only the header which **defines** the funct
 
 ---
 
+# def
+
+Let's define a function with an error in it
+
 ```python
 In [1]: def broken_function():
    ...:     print("This line is fine")
@@ -325,22 +329,16 @@ In [3]: broken_function()
 This line is fine
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
-<ipython-input-3-6169b3d09baa> in <module>()
 ----> 1 broken_function()
-
-<ipython-input-1-ffa814f9ed68> in broken_function()
-      1 def broken_function():
-      2     print("This line is fine")
 ----> 3     a = "string" + 10
-      4     print("This line won't be executed.")
-      5     print("Neither will any below it...")
-
 TypeError: must be str, not int
-
-In [4]:
 ```
 
 ---
+
+# def
+
+Same thing, but `import` it from a python file
 
 ```python
 def broken_function():
@@ -359,15 +357,7 @@ In [2]: broken.broken_function()
 This line is fine
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
-<ipython-input-2-e44e21bbe47e> in <module>()
 ----> 1 broken.broken_function()
-
-... broken.py in broken_function()
-      1 def broken_function():
-      2     print("This line is fine")
 ----> 3     a = "string" + 10
-      4     print("This line won't be executed.")
-      5     print("Neither will any below it...")
-
 TypeError: must be str, not int
 ```
