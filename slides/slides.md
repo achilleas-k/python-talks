@@ -276,6 +276,98 @@ class: center, middle
 
 ---
 
+name: funcslide-01
 
+# def
 
+```python
+In [1]: def capitalise(name):
+   ...:     name = name[0].upper() + name[1:].lower()
+   ...:     return name
+   ...:
+```
 
+---
+
+template: funcslide-01
+
+What does this do?
+
+---
+
+template: funcslide-01
+
+.strike[What does this do?]
+
+What gets **executed** here?
+
+???
+
+Hint: Only one line is actually executed.
+
+The body of the function is not run, only the header which **defines** the function.
+
+---
+
+```python
+In [1]: def broken_function():
+   ...:     print("This line is fine")
+   ...:     a = "string" + 10
+   ...:     print("This line won't be executed.")
+   ...:     print("Neither will any below it...")
+   ...:     print("Adding 'str' to 'int' will cause an error")
+   ...:     print("Not when it's defined, but when it's called")
+   ...:
+
+In [2]: # no error so far
+
+In [3]: broken_function()
+This line is fine
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-3-6169b3d09baa> in <module>()
+----> 1 broken_function()
+
+<ipython-input-1-ffa814f9ed68> in broken_function()
+      1 def broken_function():
+      2     print("This line is fine")
+----> 3     a = "string" + 10
+      4     print("This line won't be executed.")
+      5     print("Neither will any below it...")
+
+TypeError: must be str, not int
+
+In [4]:
+```
+
+---
+
+```python
+def broken_function():
+    print("This line is fine")
+    a = "string" + 10
+    print("This line won't be executed.")
+    print("Neither will any below it...")
+    print("Adding 'str' to 'int' will cause an error")
+    print("Not when it's defined, but when it's called")
+```
+
+```python
+In [1]: import broken
+
+In [2]: broken.broken_function()
+This line is fine
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-2-e44e21bbe47e> in <module>()
+----> 1 broken.broken_function()
+
+... broken.py in broken_function()
+      1 def broken_function():
+      2     print("This line is fine")
+----> 3     a = "string" + 10
+      4     print("This line won't be executed.")
+      5     print("Neither will any below it...")
+
+TypeError: must be str, not int
+```
