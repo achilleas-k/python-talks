@@ -46,6 +46,7 @@ class: center, middle
 This should look familiar
 
 ```python
+[ipython]
 In [1]: import numpy as np
 
 In [2]: arr = np.array([1, 5, 2])
@@ -55,6 +56,7 @@ Out[3]: 8
 ```
 or maybe
 ```python
+[ipython]
 In [1]: import os
 
 In [2]: os.listdir(".")
@@ -74,6 +76,7 @@ For the first part of this talk, I want to explain how you can make your own lit
 Check out this amazing Python file, called `greetings.py`
 
 ```python
+[greetings.py]
 def greet(name):
     print("Hello, {}".format(name))
 
@@ -86,6 +89,7 @@ What happens when we run it on the terminal?
 
 --
 ```
+[shell]
 $ python greetings.py
 $
 ```
@@ -106,12 +110,14 @@ Let's open up **ipython** and `import` the file
 --
 
 ```python
+[ipython]
 In [1]: import greetings
 ```
 Ok so far…
 
 --
-```
+```python
+[ipython]
 In [2]: greetings
 Out[2]: <module 'greetings' from '... greetings.py'>
 ```
@@ -137,6 +143,7 @@ The two functions are called `greet()` and `morning_greet()`, both of which take
 --
 
 ```python
+[ipython]
 In [3]: name = "Alice"
 
 In [4]: greetings.greet(name)
@@ -190,6 +197,7 @@ Sort of...
 literally
 
 ```python
+[greetprint.py]
 def greet(name):
     print("Hello, {}".format(name))
 
@@ -207,7 +215,8 @@ print("Oh my, it looks like someone just imported me ...")
 --
 
 ```python
-In [1]: import greetings
+[ipython]
+In [1]: import greetprint
 Oh my, it looks like someone just imported me ...
 
 In [2]:
@@ -229,6 +238,7 @@ Normal `import` makes the functions available under the module name
 What if we only want one of the functions and we don't like typing `greetings.` every time?
 
 ```python
+[ipython]
 In [1]: from greetings import morning_greet
 
 In [2]: morning_greet("Bob")
@@ -244,6 +254,7 @@ Alternatively you can just import everything
 
 
 ```python
+[ipython]
 In [1]: from greetings import *
 
 In [2]: greet("Charlie")
@@ -258,15 +269,31 @@ I hope you have a nice day.
 
 .bad[Never do this!]
 
+???
+
+You should generally avoid doing this
+
 --
 
 .okish[Unless you really have to...]
+
+???
+
+However, you will find out that in Python, a lot of times when we say never do this
+
+it's followed by "unless you really have to"
 
 --
 
 .good[Or a library's documentation suggests it.]
 
 (e.g., the Brian simulator)
+
+???
+
+For instance, if the tutorial or documentation for a library tells you to
+
+you might as well go ahead and do it
 
 ---
 
@@ -281,6 +308,7 @@ name: funcslide-01
 # def
 
 ```python
+[ipython]
 In [1]: def capitalise(name):
    ...:     name = name[0].upper() + name[1:].lower()
    ...:     return name
@@ -314,6 +342,7 @@ The body of the function is not run, only the header which **defines** the funct
 Let's define a function with an error in it
 
 ```python
+[ipython]
 In [1]: def broken_function():
    ...:     print("This line is fine")
    ...:     a = "string" + 10
@@ -341,6 +370,7 @@ TypeError: must be str, not int
 Same thing, but `import` it from a python file
 
 ```python
+[ipython]
 def broken_function():
     print("This line is fine")
     a = "string" + 10
@@ -351,6 +381,7 @@ def broken_function():
 ```
 
 ```python
+[ipython]
 In [1]: import broken
 
 In [2]: broken.broken_function()
@@ -361,3 +392,105 @@ TypeError                                 Traceback (most recent call last)
 ----> 3     a = "string" + 10
 TypeError: must be str, not int
 ```
+
+---
+
+# def
+
+How is this information useful?
+
+--
+
+I'll get back to that in a minut...
+
+--
+
+name: default-args-01
+
+FIRST let's look at *default argument values*
+
+--
+
+Remember our greeting functions?
+
+```python
+[greetings.py]
+def greet(name):
+    print("Hello, {}".format(name))
+
+
+def morning_greet(name):
+    print("Good morning, {}.".format(name))
+    print("I hope you have a nice day.")
+```
+
+---
+
+template: default-args-01
+
+Now the arguments have a default value
+
+```python
+[greetdefaults.py]
+def greet(name="user"):
+    print("Hello, {}".format(name))
+
+
+def morning_greet(name="user"):
+    print("Good morning, {}.".format(name))
+    print("I hope you have a nice day.")
+```
+
+---
+
+name: default-args-02
+
+# def
+
+
+```python
+[greetdefaults.py]
+def greet(name="user"):
+    print("Hello, {}".format(name))
+
+
+def morning_greet(name="user"):
+    print("Good morning, {}.".format(name))
+    print("I hope you have a nice day.")
+```
+
+---
+
+template: default-args-02
+
+So now we can do this
+
+```python
+[ipython]
+In [1]: import greetdefaults
+
+In [2]: greetdefaults.greet()
+Hello, user
+
+In [3]: greetdefaults.morning_greet()
+Good morning, user.
+I hope you have a nice day.
+```
+
+---
+
+template: default-args-02
+
+Of course, the normal way still works
+
+```python
+[ipython]
+In [4]: greetdefaults.greet("Elliot")
+Hello, Elliot
+```
+
+---
+
+# def
+
+With the old definitions
