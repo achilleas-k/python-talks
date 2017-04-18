@@ -176,23 +176,18 @@ When we do `import greetings`, Python finds the file called `greetings.py`, so i
 
 # `import`
 
-### Python **runs** the script on import
+Python *runs the script* on import...
 
 ???
 
 Notice how I said Python RUNS the greetings.py script?
-
---
-
-Does it really *run* the script?
-
-???
 
 That's in no way an inaccurate statement. Python literally runs the script as if it's executed.
 
 Sort of...
 
 --
+literally
 
 ```python
 def greet(name):
@@ -228,7 +223,8 @@ The reason we only get one print statement and not four is that when a def is fo
 
 # `from _ import _`
 
-Normal `import` makes the functions available under the module name (e.g., `greetings.greet()`)
+Normal `import` makes the functions available under the module name  
+(e.g., `greetings.greet()`)
 
 What if we only want one of the functions and we don't like typing `greetings.` every time?
 
