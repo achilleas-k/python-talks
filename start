@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+tmpprof=/tmp/jupyter-${RANDOM}
+BROWSER="/usr/bin/chromium --user-data-dir=${tmpprof} --app=%s"
+jupyter notebook presentation.ipynb
+echo "Cleaning up profile directory [${tmpprof}]"
+rm -r ${tmpprof}
