@@ -1,8 +1,8 @@
 # Intermediate Python Features
 
-Presentation slides, notebook, and code samples for the 5th Super Python Talk for Life Sciences.
+Presentation slides and code samples for the 5th *Super Python Talk for Life Sciences*.
 
-Date: 19 April, 2017
+**Date:** 19 April, 2017
 
 ### Slides
 
