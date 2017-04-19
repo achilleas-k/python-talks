@@ -1,2 +1,2 @@
-def printval(value):
-    print("Value: " + str(value))
+def printval(val):
+    print("Value: " + str(val))
