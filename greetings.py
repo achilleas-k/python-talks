@@ -1,4 +1,4 @@
 def greet(name):
-    return "Hello again, " + name
+    return "Hello, " + name
 
-print("Imported again")
+print("Woah. I'm being imported.")
