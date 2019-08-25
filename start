@@ -2,6 +2,6 @@
 
 tmpprof=$(mktemp -d)
 browser="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-first-run --user-data-dir=${tmpprof} --app=%s"
-jupyter notebook --browser="${browser}" presentation.ipynb
+jupyter notebook --browser="${browser}"
 echo "Cleaning up profile directory [${tmpprof}]"
 rm -r ${tmpprof}
