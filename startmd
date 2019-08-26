@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Creates a clean Chrome profile to run presentation without extensions or
+# personal settings and data.  Starts the Reveal presentation server, opens
+# Chrome to the presentation in "app" mode, and waits for the presentation
+# server to die.  On exit, cleans up the temporary Chrome profile.
+
+
+tmpprof=$(mktemp -d)
+
+cleanup() {
+    echo "Cleaning temporary profile directory ${tmpprof}"
+    rm -rf ${tmpprof}
+}
+
+trap cleanup EXIT
+
+reveal-md . --disable-auto-open --host localhost --port 1984 &
+rpid=$!
+
+open -n -a 'Google Chrome' --args --no-first-run --user-data-dir=${tmpprof} --app="http://localhost:1984/$1"
+
+echo "Ctrl-c to stop and cleanup"
+wait ${rpid}

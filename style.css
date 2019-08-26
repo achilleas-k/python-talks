@@ -1,0 +1,18 @@
+.reveal blockquote {
+    width: 90%;
+    padding: 0 5%;
+}
+
+.reveal pre {
+    width: 85%;
+    text-align: left;
+}
+
+.reveal pre code {
+    padding: 10px 40px;
+}
+
+.reveal section img {
+    border: 0px;
+    margin: 0px;
+}
