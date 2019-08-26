@@ -44,7 +44,6 @@ x = 10
 Name:             `x`
 Object value:     `10`
 Object type:      `int` (integer)
-Object identity:  `id(x)`
 
 ```python
 greeting = "Hello there"
@@ -53,16 +52,14 @@ greeting = "Hello there"
 Name:             `greeting`
 Object value:     `"Hello there"`
 Object type:      `str` (string)
-Object identify:  `id(greeting)`
 
 ```python
-days ["Saturday", "Sunday"]
+days = ["Saturday", "Sunday"]
 ```
 
 Name:             `days`
 Object value:     `["Saturday", "Sunday"]`
 Object type:      `list`
-Object identify:  `id(days)`
 
 
 ### (Im)mutability
@@ -92,7 +89,7 @@ Here, we're not changing the string, we're just binding (assigning) a new value 
 
 
 ```python
-greeting.append(" there")
+greeting += " there"
 print(greeting)
 greeting += ", old friend"
 print(greeting)
