@@ -135,11 +135,11 @@ And then we see that although all three lists are equal in **value**, only p and
 >>> q = p
 >>> r = [1, 3, 5]
 >>> p.append(7)
->>> print(p)
+>>> p
 [1, 3, 5, 7]
->>> print(q)
+>>> q
 [1, 3, 5, 7]
->>> print(r)
+>>> r
 [1, 3, 5]
 ```
 
@@ -150,6 +150,8 @@ Appending a value to p modifies the underlying object, which means that q also p
 
 It's easy to follow object identity when looking at examples like this, so this might not seem interesting, but we'll see how this can show up in unexpected places in a bit.
 
+Note here that, in the Python interpreter, we can just type the name of a variable and it will output the value.  This is true of any expression.
+
 ---
 
 ### 1.2 (Im)mutability
@@ -158,7 +160,7 @@ Immutable types: `int`, `float`, `str`, `tuple`
 
 Mutable types: `list`, `dict`
 
-Note:
+Notes:
 Objects in Python can be mutable or immutable.  This is a (non exhaustive, of course) list of types that are immutable and mutable.
 
 ---
@@ -167,7 +169,7 @@ Objects in Python can be mutable or immutable.  This is a (non exhaustive, of co
 
 ```python
 >>> greeting = "Hallo"
->>> print(greeting[1])
+>>> greeting[1]
 a
 >>> greeting[1] = "e"
 Traceback (most recent call last):
@@ -175,16 +177,61 @@ Traceback (most recent call last):
 TypeError: 'str' object does not support item assignment
 ```
 
-Can't change the string since it's immutable
-
 ---
 
 ```python
 greeting = "Hallo"
+greeting = "Hello"
 ```
 
+Notes:
 Here, we're not changing the string, we're just binding (assigning) a new value (a different object) to the name `greeting`.  `greeting` refers to a different object now.
 
+---
+
+```python
+>>> greeting = "Hallo"
+>>> id(greeting)
+4340894704
+>>> greeting = "Hello"
+>>> id(greeting)
+4340894960
+```
+
+Notes:
+"Hallo" and "Hello" are the values of two different objects (different IDs).  The name `greeting` can be freely bound to either.
+
+---
+
+```python
+>>> x = "the number 10"
+>>> x = 10
+```
+
+Notes:
+In fact, a name can be freely bound to anything at any time.  It can be bound to values of different types in the same program.
+
+This will not surprise anyone who's worked with a *dynamically typed* language before.
+
+---
+
+```python
+>>> xstr = "The number 10"
+>>> xint = 10
+>>> xstr + xint
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+```
+
+Notes:
+In Python, **names** can have *dynamic types*, but an operation on 
+
+---
+
+
+
+---
 
 ```python
 greeting += " there"
