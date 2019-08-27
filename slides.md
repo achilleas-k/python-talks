@@ -30,10 +30,15 @@ revealOptions:
 ---
 
 
-https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
-"A special quirk of Python is that – if no global statement is in effect – assignments to names always go into the innermost scope."
+> A special quirk of Python is that – if no global statement is in effect – assignments to names always go into the innermost scope.
 
-> "Assignments do not copy data — they just bind names to objects."
+https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
+
+---
+
+> Assignments do not copy data — they just bind names to objects.
+
+https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
 
 ---
 
@@ -50,59 +55,129 @@ The basics.
 ---
 
 
-### Definitions
+### 1.1 Definitions
 
+**Objects**
+
+Notes:
 Let's talk about **objects**.  All data in Python is represented by **objects**.  Every object has an **identity**, a **type**, and a **value**.  **Objects** are (often) identified by a symbolic **name**.
 
 ---
 
+#### Objects
+
 ```python
-x = 10
+>>> greeting = "Hello"
 ```
+
+- Identity: `id(hello)`
+  - Equivalent to the memory address (in CPython)
+- Type: `type(hello)`
+  - `str` (string)
+- Value: `10`
+  - `print(greeting)`: string representation of a value
+
+Notes:
+Let's talk about **objects**.  All data in Python is represented by **objects**.  Every object has an **identity**, a **type**, and a **value**.  **Objects** are (often) identified by a symbolic **name**.
 
 ---
 
-Name:             `x`
-Object value:     `10`
-Object type:      `int` (integer)
+#### `id()`entity is important
+
+The `is` keyword compares object identity.
+
+`==` compares object value.
+
+Notes:
+Identity of objects is important and this will become clear later.
+
+For now, keep in mind that `is` compares object identity, so it will return true when comparing two names that refer to the same object.
+
+The double equality compares object values: It will return true when comparing two names that refer to objects with the same value.
 
 ---
 
-```python
-greeting = "Hello there"
-```
-
-Name:             `greeting`
-Object value:     `"Hello there"`
-Object type:      `str` (string)
+#### `id()`entity is important
 
 ```python
-days = ["Saturday", "Sunday"]
+>>> p = [1, 3, 5]
+>>> q = p
+>>> r = [1, 3, 5]
+>>> p == q
+True
+>>> p == r
+True
+>>> r == q
+True
+>>> p is q
+True
+>>> p is r
+False
+>>> r is q
+False
+>>>
 ```
 
-Name:             `days`
-Object value:     `["Saturday", "Sunday"]`
-Object type:      `list`
+Notes:
+A quick demonstration of why this matters:
+- We assign a list of three integers to p
+- We assign p to q
+- and we assign the same list of three integers to r
 
+And then we see that although all three lists are equal in **value**, only p and q refer to the same object, they have the same identity.
 
-### (Im)mutability
+---
+
+#### `id()`entity is important
+
+```python
+>>> p = [1, 3, 5]
+>>> q = p
+>>> r = [1, 3, 5]
+>>> p.append(7)
+>>> print(p)
+[1, 3, 5, 7]
+>>> print(q)
+[1, 3, 5, 7]
+>>> print(r)
+[1, 3, 5]
+```
+
+Notes:
+And this can have implications for how a program behaves.  It's also a common gotcha for new Python users.
+
+Appending a value to p modifies the underlying object, which means that q also points to the 4-value list but of course r remains intact.
+
+It's easy to follow object identity when looking at examples like this, so this might not seem interesting, but we'll see how this can show up in unexpected places in a bit.
+
+---
+
+### 1.2 (Im)mutability
 
 Immutable types: `int`, `float`, `str`, `tuple`
 
 Mutable types: `list`, `dict`
 
+Note:
+Objects in Python can be mutable or immutable.  This is a (non exhaustive, of course) list of types that are immutable and mutable.
+
+---
 
 ### Immutable objects
 
 ```python
-greeting = "Hello"
-len(greeting)
-print(greeting[1])
-greeting[1] = "a"  # error
+>>> greeting = "Hallo"
+>>> print(greeting[1])
+a
+>>> greeting[1] = "e"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
 ```
 
-Can't change the string since it's immutable.
+Can't change the string since it's immutable
 
+---
 
 ```python
 greeting = "Hallo"
