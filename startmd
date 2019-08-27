@@ -15,8 +15,10 @@ cleanup() {
 
 trap cleanup EXIT
 
-reveal-md . --disable-auto-open --host localhost --port 1984 &
+reveal-md . --disable-auto-open --host localhost --port 1984 -w &
 rpid=$!
+
+sleep 1  # wait a second for reveal-md to start
 
 open -n -a 'Google Chrome' --args --no-first-run --user-data-dir=${tmpprof} --app="http://localhost:1984/$1"
 
