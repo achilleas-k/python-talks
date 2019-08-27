@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 tmpprof=$(mktemp -d)
+
+
+cleanup() {
+    echo "Cleaning up profile directory [${tmpprof}]"
+    rm -r ${tmpprof}
+}
+
+trap cleanup EXIT
+
 browser="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-first-run --user-data-dir=${tmpprof} --app=%s"
 jupyter notebook --browser="${browser}" $*
-echo "Cleaning up profile directory [${tmpprof}]"
-rm -r ${tmpprof}
