@@ -186,7 +186,9 @@ Note here that, in the Python interpreter, we can just type the name of a variab
 
 > Assignments do not copy data — they just bind names to objects.
 
+<div class="smtext">
 https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
+</div>
 
 ---
 
@@ -261,108 +263,26 @@ TypeError: can only concatenate str (not "int") to str
 ```
 
 Notes:
-In Python, **names** can have *dynamic types*, but an operation on 
+In Python, **names** can have *dynamic types*, but operations (and methods) can have loose or strict requirements for the types to which they apply.
 
 ---
-
-
-
----
-
-```python
-greeting += " there"
-print(greeting)
-greeting += ", old friend"
-print(greeting)
-```
-
-These are convenient ways to change the value of a **name** that has type `str`.  The latter operation `+=` is more appropriate for numerical types.
-
-```python
-x = 10
-x += 3
-print(x)
-```
-
-
-What does it mean to be **immutable** then?
-
-
-### The `id()`entity of an object
-
-```python
-greeting = "hello"
-print(id(greeting))
-
-greeting.append(" there")
-print(id(greeting))
-```
-
-```python
-x = 10
-print(id(x))
-x += 20
-print(id(x))
-```
-
-The immutable object's **value** doesn't change, the names `greeting` and `x` are bound to different objects (they have a new `id`).
-
 
 ### Mutable objects
 
 ```python
-days = ["Saturday", "Sunday"]
-print(id(days))
-days.append("Wednesday")
-print(id(days))
-
-days += ["Thursday", "Friday"]
-print(id(days))
+>>> p = [1, 3, 5]
+>>> q = p
+>>> r = [1, 3, 5]
+>>> p += [7]
+>>> p
+[1, 3, 5, 7]
+>>> q
+[1, 3, 5, 7]
+>>> r
+[1, 3, 5]
 ```
 
-The name `days` is not rebound, it's still pointing to the same object.
-The object's **value** has changed.  Lists are immutable.
-
-
-### What this means in practice
-
-In practice, you should always be aware of what you are doing to an object that is or is not mutable.
-
-```python
-weekend = ["Saturday", "Sunday"]
-days = weekend
-print(days)
-days.append("Monday")
-days.append("Tuesday")
-days.append("Wednesday")
-print(days)
-print(weekend)
-print(id(days), id(weekend))
-```
-
-When we assigned `weekend` to `days`, the existing object in `weekend` we *bound* to `days`.  Both `days` and `weekend` refer to the same object (they have the same `id`).  When we modified `days` we were modifying the underlying object that is bound to both names.
+Notes:
+Back to our previous example, we see how this is different for mutable objects.
 
 ---
-
-### Testing identities
-
-```python
-a = ["Green", "Yellow"]
-b = ["Green", "Yellow"]
-print(a == b)
-print(a is b)
-
-a.append("Red")
-print(a)
-print(b)
-
-a = b
-print(a is b)
-```
-
----
-
-> A special quirk of Python is that – if no global statement is in effect – assignments to names always go into the innermost scope.
-
-https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
-
