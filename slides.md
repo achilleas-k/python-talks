@@ -13,7 +13,8 @@ revealOptions:
 
 2019-08-29
 
----
+
+Notes:
 
 ## Concepts
 
@@ -30,27 +31,55 @@ revealOptions:
 ---
 
 
-> A special quirk of Python is that – if no global statement is in effect – assignments to names always go into the innermost scope.
-
-https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
-
----
-
-> Assignments do not copy data — they just bind names to objects.
-
-https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
-
----
-
-
 ## Part 0
 
-*General Python facts and why we care*
+Why Python?
 
+---
+
+### Loved and wanted
+
+- Highest *Wanted* language for 3 years in a row: It's the language most people want to learn (who don't know it already).
+- 2nd highest *Loved* language.
+
+*Source: Stack Overflow survey 2019: https://insights.stackoverflow.com/survey/2019*
+
+---
+
+![XKCD #353](./img/xkcd353-resized.png)
+
+<div class="smtext">
+I wrote 20 short programs in Python yesterday. It was wonderful. Perl, I'm leaving you.
+<p>Source: https://xkcd.com/353/ ([CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/))</p>
+</div>
+
+---
+
+### *Batteries included*
+
+A rich standard library means users can get started on projects without needing to download separate packages and rely on external dependencies.
+
+---
+
+### Computational science
+
+- General scientific computing: Matplotlib, NumPy, SciPy, Jupyter, Pandas
+- Machine learning: scikit-learn, TensorFlow
+- Workflows and distributed processing: SnakeMake, Dask.
+
+---
+
+![Machine Learning](./img/what-i-do.jpg)
+
+<div class="smtext">
+Source: *The Internet* (i.e., unknown, i.e., I tried very hard to find the first appearance but couldn't)
+</div>
+
+---
 
 ## Part 1
 
-The basics.
+Some basics
 
 ---
 
@@ -80,13 +109,14 @@ Let's talk about **objects**.  All data in Python is represented by **objects**.
 Notes:
 Let's talk about **objects**.  All data in Python is represented by **objects**.  Every object has an **identity**, a **type**, and a **value**.  **Objects** are (often) identified by a symbolic **name**.
 
+Note that both `id()` and `type()` are built-in introspection functions, but it's generally not recommended to use them in scripts and programs.
+
 ---
 
 #### `id()`entity is important
 
-The `is` keyword compares object identity.
-
-`==` compares object value.
+- The `is` keyword compares object identity.
+- `==` compares object value.
 
 Notes:
 Identity of objects is important and this will become clear later.
@@ -151,6 +181,12 @@ Appending a value to p modifies the underlying object, which means that q also p
 It's easy to follow object identity when looking at examples like this, so this might not seem interesting, but we'll see how this can show up in unexpected places in a bit.
 
 Note here that, in the Python interpreter, we can just type the name of a variable and it will output the value.  This is true of any expression.
+
+---
+
+> Assignments do not copy data — they just bind names to objects.
+
+https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
 
 ---
 
@@ -323,3 +359,10 @@ print(b)
 a = b
 print(a is b)
 ```
+
+---
+
+> A special quirk of Python is that – if no global statement is in effect – assignments to names always go into the innermost scope.
+
+https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
+
