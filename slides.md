@@ -130,9 +130,9 @@ The double equality compares object values: It will return true when comparing t
 #### `id()`entity is important
 
 ```python
->>> p = [1, 3, 5]
+>>> p = [1, 2, 3, 5]
 >>> q = p
->>> r = [1, 3, 5]
+>>> r = [1, 2, 3, 5]
 >>> p == q
 True
 >>> p == r
@@ -161,16 +161,16 @@ And then we see that although all three lists are equal in **value**, only p and
 #### `id()`entity is important
 
 ```python
->>> p = [1, 3, 5]
+>>> p = [1, 2, 3, 5]
 >>> q = p
->>> r = [1, 3, 5]
+>>> r = [1, 2, 3, 5]
 >>> p.append(7)
 >>> p
-[1, 3, 5, 7]
+[1, 2, 3, 5, 7]
 >>> q
-[1, 3, 5, 7]
+[1, 2, 3, 5, 7]
 >>> r
-[1, 3, 5]
+[1, 2, 3, 5]
 ```
 
 Notes:
@@ -270,17 +270,19 @@ In Python, **names** can have *dynamic types*, but operations (and methods) can 
 ### Mutable objects
 
 ```python
->>> p = [1, 3, 5]
+>>> p = [1, 2, 3, 5]
 >>> q = p
->>> r = [1, 3, 5]
+>>> r = [1, 2, 3, 5]
 >>> p += [7]
 >>> p
-[1, 3, 5, 7]
+[1, 2, 3, 5, 7]
 >>> q
-[1, 3, 5, 7]
+[1, 2, 3, 5, 7]
 >>> r
-[1, 3, 5]
+[1, 2, 3, 5]
 ```
+
+- `+=` is defined to append two lists and change the LHS **in place*.
 
 Notes:
 Back to our previous example, we see how this is different for mutable objects.
