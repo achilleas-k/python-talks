@@ -282,9 +282,37 @@ In Python, **names** can have *dynamic types*, but operations (and methods) can 
 [1, 2, 3, 5]
 ```
 
-- `+=` is defined to append two lists and change the LHS **in place*.
+- `+=` is defined to append two lists and change the LHS **in place**.
 
 Notes:
 Back to our previous example, we see how this is different for mutable objects.
+
+---
+
+### 1.3 Collections and iteration
+
+---
+
+#### Built-ins
+
+`dict`, `list`, `tuple`, `set`
+
+---
+
+#### Built-ins: dictionaries
+
+```python
+>>> colours = {
+...   "red": "ff0000",
+...   "blue": "0000ff",
+...   "green": "00ff00",
+...   "darkgray": "606060"
+... }
+>>> colours["red"]
+'ff0000'
+```
+
+- Keys can be any immutable object
+- Values can be any object
 
 ---
