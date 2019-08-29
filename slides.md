@@ -203,7 +203,7 @@ Objects in Python can be mutable or immutable.  This is a (non exhaustive, of co
 
 ---
 
-### Immutable objects
+#### Immutable objects
 
 ```python
 >>> greeting = "Hallo"
@@ -267,7 +267,7 @@ In Python, **names** can have *dynamic types*, but operations (and methods) can 
 
 ---
 
-### Mutable objects
+#### Mutable objects
 
 ```python
 >>> p = [1, 2, 3, 5]
